@@ -1,7 +1,17 @@
-<h1>Movie Lists</h1>
+<div class="container">
 
-<ol>
-  <% @lists.each do |list| %>
-	<li><%= list.name %></li>
-  <% end %>
-</ol>
+	<h1>Movie Lists</h1>
+
+	<%= link_to "Add a movie list", new_list_path, class: "btn btn-outline-primary" %><br>
+	<br>
+
+	<ol>
+		<% @lists.each do |list| %>   
+		<li><div class="d-flex justify-content-between">
+      <div><%= list.name %> </div> <div><%= link_to list_path(list), class: "text-primary", method: :get do %><i class="fa-solid fa-eye"></i></div></div>
+      
+      <% end %></li>
+		<% end %>
+	</ol>
+
+</div>
