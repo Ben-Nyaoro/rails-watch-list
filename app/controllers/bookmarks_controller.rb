@@ -1,7 +1,7 @@
 class BookmarksController < ApplicationController
 
   before_action :set_list, only: [:new, :create]  
-  before_action :set_bookmark, only:[:destroy]
+  before_action :set_bookmark, only: [:destroy]
 
   # routes to #new
   def new
@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
 		@bookmark = Bookmark.new(bookmark_params)
 		@bookmark.list = @list
     if @bookmark.save
-			redirect_to list_path(@list)
+			redirect_to root_path
 		else
 			render :new, notice: "Bookmark was successfully created"
 		end
@@ -23,7 +23,7 @@ class BookmarksController < ApplicationController
 
   def destroy		
     @bookmark.destroy
-    redirect_to bookmark_path(@bookmark.movie)
+    redirect_to bookmark_path(@bookmark.list)
 	end
 
 private

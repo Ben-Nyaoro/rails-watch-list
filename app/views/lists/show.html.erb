@@ -1,3 +1,29 @@
-<h1>Movie List</h1>
+<h1>Movie List ------ <%= @list.name %></h1> 
 
-<%= @list.name %>
+<div class="card bg-dark text-white">
+  <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" class="img-fluid" alt="Movie Lists">
+  <div class="card-img-overlay text-center">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text" >Save your movies.</p>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+</div><br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">  
+  <% @list.movies.each do |movie| %>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+			<div class = "rounded mx-auto d-block">
+      <div class="col">
+        <div class="card h-50">
+  				<%= image_tag movie.poster_url, alt: movie.title, class: "img-thumbnail", :size => "100%"  %>
+           <div class="card-body">
+            <strong> <%= movie.title %><%= movie.rating %> <br></i></strong>
+            <%= movie.overview %>
+            <%= bookmark.comment %></small>
+           <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+         </div>
+       </div>
+     </div>
+    </div>
+  <% end %>
+</div><hr>

@@ -1,6 +1,7 @@
-<h1>Bookmarks</h1>
+<h1>Bookmark a movie</h1>
 
-<%= simple_form_for [@list, @bookmark] do |f| %>
-    <%= f.text :comment %>
-    <%= f.submit %>
-<% end %>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.input :comment, placeholder: 'Write your comment here!' %>
+    <%= f.association :movie, collection: Movie.all.order(:title), prompt: "Select a movie"  %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
