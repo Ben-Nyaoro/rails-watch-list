@@ -6,13 +6,14 @@ class ListsController < ApplicationController
   def index
 		@lists = List.all
 	end
-  # routes to #new
-  def new
-		@list = List.new
-	end
-  
+
   # routes to #show
   def show
+	end
+
+# routes to #new
+  def new
+		@list = List.new
 	end
 
   # routes to #create
@@ -26,7 +27,7 @@ class ListsController < ApplicationController
 	end
 
   private
-  
+
   def set_list
 		@list = List.find(params[:id])
 	end

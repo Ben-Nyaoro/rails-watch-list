@@ -1,1 +1,6 @@
 <h1>Bookmarks</h1>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.text :comment %>
+    <%= f.submit %>
+<% end %>
