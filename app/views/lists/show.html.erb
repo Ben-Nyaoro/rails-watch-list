@@ -1,14 +1,19 @@
-<h2>Movies under <strong><%= @list.name %></strong> category list</h2>
 
-<div class="card bg-dark text-white img-responsive text-align-center">
-  <img src="https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Movie Lists">
-  <div class="card-img-overlay text-center">
+<div class="d-flex justify-content-evenly p-3">
+	<%= link_to "Back to list", root_path, class: "btn btn-outline-dark" %>
+<h2>Movies under <strong><%= @list.name %></strong> category list</h2>
+	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+</div><hr>
+
+<div class="card bg-dark text-white">
+  <img class="card-img" src="https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Card image">
+  <div class="card-img-overlay">
     <h2 class="card-text" >Save your movies.</h2>
     <p class="card-text">Select from a list and add to yours for easy reference</p>
   </div>
 </div><br>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4">
   <% @list.movies.each do |movie| %>
     <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
 			<div class = "rounded mx-auto d-block">
@@ -19,10 +24,15 @@
             <strong> <%= movie.title %><%= movie.rating %> <br></i></strong>
             <%= movie.overview %>
             <%= bookmark.comment %></small>
-           <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+           <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
          </div>
        </div>
      </div>
     </div>
   <% end %>
 </div><hr>
+
+<div class="d-flex justify-content-evenly p-3">
+	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+</div>
+

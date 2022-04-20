@@ -13,7 +13,7 @@ class BookmarksController < ApplicationController
 		@bookmark = Bookmark.new(bookmark_params)
 		@bookmark.list = @list
     if @bookmark.save
-			redirect_to root_path
+			redirect_to list_path(@list)
 		else
 			render :new, notice: "Bookmark was successfully created"
 		end
