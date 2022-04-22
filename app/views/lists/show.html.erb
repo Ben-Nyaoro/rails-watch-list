@@ -6,12 +6,13 @@
 </div><hr>
 
 <div class="card bg-dark text-white">
-  <img class="card-img" src="https://images.unsplash.com/photo-1524712245354-2c4e5e7121c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80" alt="Card image">
+	<%= cl_image_tag(@list.photo.key, :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
   <div class="card-img-overlay">
     <h2 class="card-text" >Save your movies.</h2>
     <p class="card-text">Select from a list and add to yours for easy reference</p>
   </div>
 </div><br>
+
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
   <% @list.movies.each do |movie| %>
@@ -35,4 +36,3 @@
 <div class="d-flex justify-content-evenly p-3">
 	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
 </div>
-
