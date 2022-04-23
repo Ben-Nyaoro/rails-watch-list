@@ -55,4 +55,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 
 gem 'dotenv-rails', groups: [:development, :test]
 
+# manages photos upload
 gem 'cloudinary', '~> 1.16.0'
+
+#Manages user authentification
+gem 'devise'
