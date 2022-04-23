@@ -6,7 +6,11 @@
 </div><hr>
 
 <div class="card bg-dark text-white">
-	<%= cl_image_tag(@list.photo.key, :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
+	<% unless @list.photo.key.nil? %>
+		<%= cl_image_tag(@list.photo.key, :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
+		<% else %>
+		<%= cl_image_tag("geoffrey-moffett-TFRezw7pQwI-unsplash_umfygu", :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
+	<% end %>
   <div class="card-img-overlay">
     <h2 class="card-text" >Save your movies.</h2>
     <p class="card-text">Select from a list and add to yours for easy reference</p>
