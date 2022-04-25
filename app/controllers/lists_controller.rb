@@ -19,6 +19,7 @@ class ListsController < ApplicationController
   # routes to #create
   def create
 		@list = List.create(list_params)
+    @list.user = current_user
     if @list.save
 			redirect_to list_path(@list)
 		else
