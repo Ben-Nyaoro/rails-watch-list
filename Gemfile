@@ -58,5 +58,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 # manages photos upload
 gem 'cloudinary', '~> 1.16.0'
 
-#Manages user authentification
+# Manages user authentification
 gem 'devise'
+
+# patterns to build a simple, robust and scalable authorization system.
+gem "pundit", "~> 2.2"

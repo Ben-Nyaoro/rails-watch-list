@@ -6,12 +6,14 @@ class BookmarksController < ApplicationController
   # routes to #new
   def new
 		@bookmark = Bookmark.new
+    authorize @bookmark
 	end
   
   # routes to #create
   def create
 		@bookmark = Bookmark.new(bookmark_params)
 		@bookmark.list = @list
+    authorize @bookmark
     @bookmark.user = current_user
     if @bookmark.save
 			redirect_to list_path(@list)
@@ -35,10 +37,12 @@ private
 
   def set_bookmark
 		@bookmark = Bookmark.find(params[:id])
+    authorize @bookmark
 	end
 
   def set_list
     @list = List.find(params[:list_id])
+    authorize @list
   end
 
 end

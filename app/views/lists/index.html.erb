@@ -8,9 +8,9 @@
 	<ol>
 		<% @lists.each do |list| %>   
 		<li><div class="d-flex justify-content-between">
-      <div> <%= list.name %> </div> 
-      <div><%= link_to "View", list_path(list), class: "text-primary", method: :get %> </li>
+      <div> <%= list.name %> </div>
+      <div>
+      <%= link_to "View", list_path(list), class: "text-primary", method: :get %>
 		<% end %>
 	</ol>
-
 </div>

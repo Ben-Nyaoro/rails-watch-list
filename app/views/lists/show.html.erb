@@ -1,8 +1,12 @@
 
-<div class="d-flex justify-content-evenly p-3">
-	<%= link_to "Back to list", root_path, class: "btn btn-outline-dark" %>
+<div class="d-flex justify-content-around p-3">
+  <% if policy(@list).destroy? %>
+	  <%= link_to "Delete list", list_path(@list), method: :delete, data: { confirm: "Are you sure you want to remove #{@list.name} from your list?"}, class: "btn btn-outline-danger" %>
+  <% end %>
 <h2>Movies under <strong><%= @list.name %></strong> category list</h2>
-	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+  <% if policy(@list).update? %>
+	  <%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+  <% end %>
 </div><hr>
 
 <div class="card bg-dark text-white">
@@ -32,14 +36,21 @@
             <%= movie.overview.first(80)... %> <br><hr>
               <strong><p>My Comments</p></strong>
              <%= bookmark.comment %></small><br><hr>
-            <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %> <br>
+              <% if policy(bookmark).destroy? %>
+                <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %> <br>
+              <% end %>
          </div>
        </div>
-     </div>
+      </div>
     </div>
   <% end %>
 </div><hr>
 
-<div class="d-flex justify-content-evenly p-3">
-	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
-</div>
+<div class="d-flex justify-content-around p-3">
+	 <% if policy(@list).edit? %>
+      <%= link_to "Edit this list", edit_list_path(List), class: "btn btn-outline-info", method: :get %> </li>
+	 <% end %>
+  <% if policy(@list).update? %>
+	  <%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+  <% end %>
+</div><hr>
