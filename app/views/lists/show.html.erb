@@ -1,11 +1,11 @@
 
 <div class="d-flex justify-content-around p-3">
   <% if policy(@list).destroy? %>
-	  <%= link_to "Delete list", list_path(@list), method: :delete, data: { confirm: "Are you sure you want to remove #{@list.name} from your list?"}, class: "btn btn-outline-danger" %>
+	<%= link_to "Delete list", list_path(@list), method: :delete, data: { confirm: "Are you sure you want to remove #{@list.name} from your list?"}, class: "btn btn-outline-danger" %>
   <% end %>
 <h2>Movies under <strong><%= @list.name %></strong> category list</h2>
   <% if policy(@list).update? %>
-	  <%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+	<%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
   <% end %>
 </div><hr>
 
@@ -26,31 +26,31 @@
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
   <% @list.movies.each do |movie| %>
-    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-			<div class = "rounded mx-auto d-block">
-       <div class="col">
+		<div class = "rounded mx-auto d-block">
+      <div class="col">
         <div class="card">
-  				<%= image_tag movie.poster_url, alt: movie.title, class: "img-thumbnail", :size => "100%"  %>
-           <div class="card-body">
+          <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+          <%= image_tag movie.poster_url, alt: movie.title, class: "img-thumbnail", :size => "100%" %>
+            <div class="card-body">
             <strong> <%= movie.title %><%= movie.rating %> <br></i></strong>
             <%= movie.overview.first(80)... %> <br><hr>
               <strong><p>My Comments</p></strong>
-             <%= bookmark.comment %></small><br><hr>
+              <%= bookmark.comment %></small><br><hr>
               <% if policy(bookmark).destroy? %>
                 <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %> <br>
               <% end %>
-         </div>
-       </div>
+            </div>
+          </div>
       </div>
     </div>
   <% end %>
 </div><hr>
 
 <div class="d-flex justify-content-around p-3">
-	 <% if policy(@list).edit? %>
-      <%= link_to "Edit this list", edit_list_path(List), class: "btn btn-outline-info", method: :get %> </li>
-	 <% end %>
+  <% if policy(@list).edit? %>
+    <%= link_to "Edit this list", edit_list_path(List), class: "btn btn-outline-info", method: :get %> </li>
+  <% end %>
   <% if policy(@list).update? %>
-	  <%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
+  <%= link_to "Add movie to list", new_list_bookmark_path(@list), class: "btn btn-outline-secondary" %>
   <% end %>
 </div><hr>

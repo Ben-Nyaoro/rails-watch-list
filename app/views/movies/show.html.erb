@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row d-flex justify-content-around">
+    <div class="col-5 p-4">
+	    <% unless @movie.poster_url.nil? %>
+      <%= image_tag @movie.poster_url, alt: @movie.title, class: "img-fluid", :size => "75%" %>
+		  <% else %>
+      <%= image_tag poster_url: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bW92aWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60", alt: @movie.title, class: "img-thumbnail", :size => "100%" %>
+	    <% end %>
+    </div>
+    <div class="col-7 p-4 justify-content-between">
+      <h2 class="" > <strong> <%= @movie.title %> </strong> </h2>
+      <p class=""><%= @movie.overview %></p>
+				<p class=""> <strong> Rating: </strong> <%= @movie.rating %> </p> <br><hr><br>
+      <div class="d-flex justify-content-between">
+				<div class="">
+					<li class="list-inline"> <%= link_to "Edit", edit_movie_path, class: "btn btn-outline-info" %>
+					<%= link_to "Delete", movie_path(@movie),  method: :delete, data: { confirm: "Are you sure you want to delete #{@movie.title}?" }, class: "btn btn-outline-danger" %>
+				</div>
+				<div class="">
+					<%= link_to "Add to my List", new_list_bookmark_path(@movie), class: "btn btn-outline-primary" %> </li>
+				</div>
+    </div>
+  </div>
+</div><br>

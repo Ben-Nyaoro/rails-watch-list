@@ -1,4 +1,4 @@
-class BookmarkPolicy < ApplicationPolicy
+class MoviePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,15 +6,19 @@ class BookmarkPolicy < ApplicationPolicy
     end
   end
 
-	def create?
+  def show?
 	  true
+  end
+
+  def create?
+		true
 	end
 
   def update?
-	  record.user == user
+		true
 	end
 
   def destroy?
-	  record.user == user
+		true
 	end
 end

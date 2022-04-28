@@ -1,12 +1,13 @@
 class BookmarksController < ApplicationController
 
   before_action :set_list, only: [:new, :create]  
-  before_action :set_bookmark, only: [:destroy]
+  before_action :set_bookmark, only: [:edit, :update, :destroy]
 
   # routes to #new
   def new
 		@bookmark = Bookmark.new
     authorize @bookmark
+    authorize @list
 	end
   
   # routes to #create
@@ -21,6 +22,10 @@ class BookmarksController < ApplicationController
 			render :new, notice: "Bookmark was successfully created"
 		end
 	end
+
+def edit
+	
+end
 
   # routes to #destroy
 
