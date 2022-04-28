@@ -1,11 +1,15 @@
 <div class="container">
   <h1 class="text-center">All Movies</h1>
+		<%= link_to "Add movie",  new_movie_path, class: "btn btn-outline-primary" %><br>
+		<br>
 			<div class = "row">
       <% @movies.each do |movie| %>
       <div class="col-3 list-inline">
           <li> <%= image_tag movie.poster_url, alt: movie.title, class: "img-thumbnail", :size => "100%" %> </li>
           <strong><li> <%= movie.title %> </li></strong>
-          <li> <%= movie.overview.first(80)... %> <%= link_to "More", movie_path(movie) %> </li>
+          <li> <%= movie.overview.first(80)... %> <%= link_to "More", movie_path(movie) %> </li><br>
       </div>
-    <% end %>
+    <% end %> <br> <hr> <br>
+		<%= link_to "Add movie",  new_movie_path, class: "btn btn-outline-primary" %> 
+		<br>
 </div>
