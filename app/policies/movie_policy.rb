@@ -11,7 +11,7 @@ class MoviePolicy < ApplicationPolicy
   end
 
   def create?
-		true
+		user.admin
 	end
 
   # def edit?
@@ -29,6 +29,6 @@ class MoviePolicy < ApplicationPolicy
   private
 
   def user_is_owner_or_admin?
-		user == record.user
+		user == record.user || user.admin
 	end
 end
