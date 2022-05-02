@@ -1,0 +1,15 @@
+<h1>User Profile </h1>
+
+<div class="container">
+	<div class="row align-content-center">
+		<div class="col-5">
+			<%= image_tag @user.photo, alt: @user.name, class: "img-thumbnail rounded-circle", :size => "100%" %>
+		</div>
+		<div class="col-7 list-inline ">
+			<li><strong><%= @user.name %></strong></li>
+			<li><%= @user.address %></li>
+			<li><%= @user.email %></li><br>
+			<li><%= link_to "Edit", edit_user_path(@user) %></li>
+		</div>
+	</div>
+</div>

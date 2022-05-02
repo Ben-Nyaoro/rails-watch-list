@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: b78a47e64d79863dfb2a987c84157a8b0de3a037
+  branch: master
+  specs:
+    faker (2.20.0)
+      i18n (>= 1.8.11, < 2)
+
+GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 60f73d2424a6c53beea77b0779d910768d4fb055
   specs:
@@ -100,6 +108,7 @@ GEM
     ffi (1.15.5)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.7.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -256,7 +265,9 @@ DEPENDENCIES
   cloudinary (~> 1.16.0)
   devise
   dotenv-rails
+  faker!
   font-awesome-sass (~> 5.15)
+  geocoder
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)

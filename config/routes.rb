@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 root to: 'movies#index'
 
 resources :movies
+resources :users
 resources :lists do
     resources :bookmarks, except: [ :destroy ]
   end

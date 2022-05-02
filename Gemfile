@@ -63,3 +63,9 @@ gem 'devise'
 
 # patterns to build a simple, robust and scalable authorization system.
 gem "pundit", "~> 2.2"
+
+# Faker gem to seed data into the DB
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# In its simplest form, Geocoder takes an address and searches for its latitude/longitude coordinates:
+gem "geocoder"
