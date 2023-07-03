@@ -13,7 +13,7 @@
 	<% unless @list.photo.key.nil? %>
 		<%= cl_image_tag(@list.photo.key, :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
 		<% else %>
-		<%= cl_image_tag("geoffrey-moffett-TFRezw7pQwI-unsplash_umfygu", :flags=>"ignore_aspect_ratio", :height=>400, :crop=>"scale") %>
+		<%= image_tag "https://images.unsplash.com/photo-1612837017391-4b6b7b0b0b0f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bW92aWUlMjBsb3ZlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80", :size => "100%" %>
 	<% end %>
   <div class="card-img-overlay">
     <h2 class="card-text" >Save your movies.</h2>
@@ -37,7 +37,7 @@
               <strong><p>My Comments</p></strong>
               <%= bookmark.comment %></small><br><hr>
               <% if policy(bookmark).destroy? %>
-                <%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %> <br>
+                <%= button_to "Delete", bookmark_path(bookmark), method: :delete, data: { turbo: false, confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %> <br>
               <% end %>
             </div>
           </div>
