@@ -17,5 +17,4 @@ production:
   <<: *default
   database: rails-watch-list_production
   username: rails-watch-list
-  password: <%= ENV['RAILS-WATCH-LIST_DATABASE_PASSWORD'] %>
-```
+  password: <%= ENV['RAILS-WATCH-LIST_DATABASE_PASSWORD'] %> # This is the line I added
