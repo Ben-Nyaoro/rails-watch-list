@@ -6,15 +6,12 @@ default: &default
 development:
   <<: *default
   database: rails-watch-list_development
-  username: rails-watch-list
-  password: <%= ENV['RAILS-WATCH-LIST_DATABASE_PASSWORD'] %>
 
 
 test:
   <<: *default
   database: rails-watch-list_test
-  username: rails-watch-list
-  password: <%= ENV['RAILS-WATCH-LIST_DATABASE_PASSWORD'] %>
+
 
 production:
   <<: *default
